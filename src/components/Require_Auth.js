@@ -8,7 +8,9 @@ export default function(ComposedComponent) {
             context.router;
         }
         componentWillMount() {
-            this.context.router.push('/');
+            if (!this.props.authenticated) {
+                this.context.router.push('/');
+            }
         }
         render() {
             return <ComposedComponent {...this.props} />;
